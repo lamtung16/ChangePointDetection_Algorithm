@@ -26,6 +26,7 @@ def trace_back(tau_star):
 
 # solve opart
 def opart(sequence, lda):
+    sequence = np.append(0, sequence)
     y, z = get_cumsum(sequence)             # cumsum vector
     sequence_length = len(sequence)-1       # length of sequence
 
@@ -42,4 +43,4 @@ def opart(sequence, lda):
         tau_star[t] = last_chpnt                        # update tau_star
 
     set_of_chpnt = trace_back(tau_star[1:])             # get set of changepoints
-    return set_of_chpnt[1:-1]
+    return set_of_chpnt[1:-1] - 1
